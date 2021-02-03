@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Export APK
 
 # Controls when the action will run. 
 on:
@@ -38,7 +38,7 @@ jobs:
           # Project path
           project-path:  ./
           # Output path of apk
-          output-path: ./output.apk
+          output-path: /output.apk
           # Name of the gradle task to exec
           gradle-task: assembleDebug
           # Boolean to tell the Action to upload the .ipa to Browserstack App Live after the build.
