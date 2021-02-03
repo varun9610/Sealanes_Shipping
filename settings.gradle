@@ -1,0 +1,2 @@
+rootProject.name = "Sealanes Shipping"
+include ':app'
