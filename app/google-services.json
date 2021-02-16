@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1079396561109",
+    "firebase_url": "https://sealanesshipping-default-rtdb.firebaseio.com",
+    "project_id": "sealanesshipping",
+    "storage_bucket": "sealanesshipping.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079396561109:android:e88ab55792bf07371a325c",
+        "android_client_info": {
+          "package_name": "com.android.sealanesshipping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079396561109-383u0hopfabiq0u2fsko2nbh8nrjlj3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuHmADKIrP21UVP7lR7Z36uBp-hM7Saq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079396561109-383u0hopfabiq0u2fsko2nbh8nrjlj3k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
