@@ -10,4 +10,39 @@
         android:name="com.android.sealanesshipping.TitleFragment"
         android:label="fragment_title"
         tools:layout="@layout/fragment_title" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.android.sealanesshipping.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.android.sealanesshipping.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" />
+    <fragment
+        android:id="@+id/weightInput"
+        android:name="com.android.sealanesshipping.WeightInput"
+        android:label="fragment_weight_input"
+        tools:layout="@layout/fragment_weight_input" />
+    <fragment
+        android:id="@+id/destinationFragment"
+        android:name="com.android.sealanesshipping.DestinationFragment"
+        android:label="fragment_destination"
+        tools:layout="@layout/fragment_destination" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.android.sealanesshipping.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.android.sealanesshipping.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.android.sealanesshipping.SuccessFragment"
+        android:label="fragment_success"
+        tools:layout="@layout/fragment_success" />
 </navigation>

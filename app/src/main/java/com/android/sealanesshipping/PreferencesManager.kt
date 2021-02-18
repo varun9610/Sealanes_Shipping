@@ -22,9 +22,19 @@ constructor(context: Context) {
         editor.commit()
     }
 
+
+
+    fun isLoggedIn() = preferences.getBoolean(LOGGED_IN, true)
+
+    fun setLoggedIn() {
+        editor.putBoolean(LOGGED_IN, false).commit()
+        editor.commit()
+    }
+
     companion object {
         private const val PRIVATE_MODE = 0
         private const val PREFERENCE_CONFIGURATION_NAME = "configuration"
         private const val FIRST_TIME = "isFirstRun"
+        private const val LOGGED_IN = "isFirstRun"
     }
 }
