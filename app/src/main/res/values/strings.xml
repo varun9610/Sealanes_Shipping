@@ -22,4 +22,8 @@
     <string name="order_succesS_placed">Your order is successfully placed!</string>
     <string name="greet_user">Hey $username!</string>
     <string name="image_desc">Order Success</string>
+    <string name="login">Login</string>
+    <string name="login_subtext">Login to book an order</string>
+    <string name="email">Email</string>
+    <string name="enter_password">Password</string>
 </resources>
