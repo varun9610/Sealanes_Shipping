@@ -9,12 +9,23 @@
         android:id="@+id/titleFragment"
         android:name="com.android.sealanesshipping.TitleFragment"
         android:label="fragment_title"
-        tools:layout="@layout/fragment_title" />
+        tools:layout="@layout/fragment_title" >
+        <action
+            android:id="@+id/action_titleFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.android.sealanesshipping.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_destinationFragment"
+            app:destination="@id/destinationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.android.sealanesshipping.RegistrationFragment"
@@ -24,12 +35,20 @@
         android:id="@+id/weightInput"
         android:name="com.android.sealanesshipping.WeightInput"
         android:label="fragment_weight_input"
-        tools:layout="@layout/fragment_weight_input" />
+        tools:layout="@layout/fragment_weight_input" >
+        <action
+            android:id="@+id/action_weightInput_to_successFragment"
+            app:destination="@id/successFragment" />
+    </fragment>
     <fragment
         android:id="@+id/destinationFragment"
         android:name="com.android.sealanesshipping.DestinationFragment"
         android:label="fragment_destination"
-        tools:layout="@layout/fragment_destination" />
+        tools:layout="@layout/fragment_destination" >
+        <action
+            android:id="@+id/action_destinationFragment_to_weightInput"
+            app:destination="@id/weightInput" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.android.sealanesshipping.AboutFragment"
