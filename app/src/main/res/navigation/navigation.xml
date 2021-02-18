@@ -15,7 +15,9 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_titleFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
+            app:destination="@id/registrationFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -30,7 +32,11 @@
         android:id="@+id/registrationFragment"
         android:name="com.android.sealanesshipping.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/weightInput"
         android:name="com.android.sealanesshipping.WeightInput"
@@ -47,7 +53,8 @@
         tools:layout="@layout/fragment_destination" >
         <action
             android:id="@+id/action_destinationFragment_to_weightInput"
-            app:destination="@id/weightInput" />
+            app:destination="@id/weightInput"
+            app:popUpTo="@id/destinationFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

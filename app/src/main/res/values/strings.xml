@@ -26,4 +26,6 @@
     <string name="login_subtext">Login to book an order</string>
     <string name="email">Email</string>
     <string name="enter_password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign up</string>
 </resources>
