@@ -3,9 +3,23 @@
     <string name="slide_one_top_text">Fast Shipping</string>
     <string name="slide_two_top_text">Worlds Largest Network</string>
     <string name="slide_three_top_text">Price you can afford</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="slide_one_down_text">We provide the fastest waterway shipping!</string>
     <string name="slide_two_down_text">We deliver to over 150+ countries around the world!</string>
     <string name="slide_three_down_text">We provide the cheapest per cubic weight price.</string>
+    <string name="source_destination">Enter Source Destination</string>
+    <string name="step_1_2">Step 1/2</string>
+    <string name="placeholder_enter_source_location">Source Location</string>
+    <string name="final_destination">Final Destination</string>
+    <string name="placeholder_enter_final_location">Final Location</string>
+    <string name="next">Next</string>
+    <string name="step_2_2">Step 2/2</string>
+    <string name="enter_weight">Enter Weight (in Cubic Meters)</string>
+    <string name="placeholder_enteR_weight">Enter Weight</string>
+    <string name="submit">Submit</string>
+    <string name="placeholder">dummy text</string>
+    <string name="oder_id">Order ID:</string>
+    <string name="order_succesS_placed">Your order is successfully placed!</string>
+    <string name="greet_user">Hey $username!</string>
+    <string name="image_desc">Order Success</string>
 </resources>
