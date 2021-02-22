@@ -8,10 +8,11 @@
     tools:context=".LoginFragment">
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/etEmaillogin"
         android:layout_width="225dp"
         android:layout_height="48dp"
         android:ems="10"
+        android:hint="@string/hint_enter_email"
         android:inputType="textEmailAddress"
         android:labelFor="@id/textView12"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,6 +45,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/login"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,6 +63,7 @@
         android:padding="4dp"
         android:text="@string/email"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,10 +73,11 @@
         app:layout_constraintVertical_bias="0.403" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/etpasswordlogin"
         android:layout_width="225dp"
         android:layout_height="48dp"
         android:ems="10"
+        android:hint="@string/hint_enter_password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,6 +94,7 @@
         android:padding="4dp"
         android:text="@string/enter_password"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
