@@ -26,6 +26,12 @@
     <string name="login_subtext">Login to book an order</string>
     <string name="email">Email</string>
     <string name="enter_password">Password</string>
-    <string name="sign_in">Sign In</string>
-    <string name="sign_up">Sign up</string>
+    <string name="string_register">Register</string>
+    <string name="register_desc">Register to get started</string>
+    <string name="string_name">Name</string>
+    <string name="string_phonenumber">Phone Number</string>
+    <string name="hint_enter_name" >Enter Name</string>
+    <string name="hint_enter_number">Enter Phone Number</string>
+    <string name="hint_enter_email">Enter Email</string>
+    <string name="hint_enter_password">Enter Password</string>
 </resources>

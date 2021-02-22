@@ -5,16 +5,39 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import com.android.sealanesshipping.databinding.FragmentLoginBinding
+import com.android.sealanesshipping.databinding.FragmentTitleBinding
 
 
 class TitleFragment : Fragment() {
 
+
+    private var _binding: FragmentTitleBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+
+    private val binding get() = _binding!!
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_title, container, false)
+    ): View {
+        _binding = FragmentTitleBinding.inflate(inflater, container, false)
+        binding.button5.setOnClickListener {
+            it.findNavController().navigate(R.id.action_titleFragment_to_loginFragment)
+        }
+        binding.button6.setOnClickListener {
+            it.findNavController().navigate(R.id.action_titleFragment_to_registrationFragment)
+        }
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
