@@ -34,4 +34,8 @@
     <string name="hint_enter_number">Enter Phone Number</string>
     <string name="hint_enter_email">Enter Email</string>
     <string name="hint_enter_password">Enter Password</string>
+    <string name="string_log_out">Log out</string>
+    <string name="string_share">Share</string>
+    <string name="string_about_us">About us</string>
+    <string name="string_contact_us">Contact us</string>
 </resources>

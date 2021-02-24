@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.navigation.findNavController
 import com.android.sealanesshipping.databinding.FragmentLoginBinding
@@ -19,7 +20,7 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private lateinit var auth: FirebaseAuth
 
-
+    private var progressBar: ProgressBar? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
 
@@ -34,6 +35,7 @@ class LoginFragment : Fragment() {
         binding.button3.setOnClickListener {
             onClick()
         }
+        setProgressBar(binding.progressBar2)
         auth = Firebase.auth
 
         return binding.root
@@ -47,7 +49,7 @@ class LoginFragment : Fragment() {
         if (!validateForm()) {
             return
         }
-
+        showProgressBar()
 
         // [START sign_in_with_email]
         auth.signInWithEmailAndPassword(email, password)
@@ -71,10 +73,23 @@ class LoginFragment : Fragment() {
                         Toast.LENGTH_SHORT).show()
                 }
                 // [END_EXCLUDE]
+                hideProgressBar()
             }
         // [END sign_in_with_email]
     }
 
+
+    fun setProgressBar(bar: ProgressBar) {
+        progressBar = bar
+    }
+
+    fun showProgressBar() {
+        progressBar?.visibility = View.VISIBLE
+    }
+
+    fun hideProgressBar() {
+        progressBar?.visibility = View.INVISIBLE
+    }
 
 
 
