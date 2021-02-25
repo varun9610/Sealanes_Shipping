@@ -23,7 +23,6 @@ constructor(context: Context) {
     }
 
 
-
     fun isLoggedIn() = preferences.getBoolean(LOGGED_IN, true)
 
     fun setLoggedIn() {

@@ -64,7 +64,7 @@ class RegistrationFragment : Fragment() {
 
 
     private fun onClick() {
-        createAccount(binding.etEmail.text.toString(),binding.etpassword.text.toString())
+        createAccount(binding.etEmail.text.toString(), binding.etpassword.text.toString())
     }
 
     private fun createAccount(email: String, password: String) {
@@ -83,13 +83,15 @@ class RegistrationFragment : Fragment() {
                     ).show()
                     sendEmailVerification()
                     val user = auth.currentUser
-                    view?.findNavController()?.navigate(R.id.action_registrationFragment_to_loginFragment)
+                    view?.findNavController()
+                        ?.navigate(R.id.action_registrationFragment_to_loginFragment)
 
                 } else {
                     // If sign in fails, display a message to the user.
 
                     Toast.makeText(
-                        requireContext(), "Registration failed. Please Try Again in a after some time.",
+                        requireContext(),
+                        "Registration failed. Please Try Again in a after some time.",
                         Toast.LENGTH_SHORT
                     ).show()
 
@@ -110,14 +112,18 @@ class RegistrationFragment : Fragment() {
                 // [START_EXCLUDE]
 
                 if (task.isSuccessful) {
-                    Toast.makeText(requireContext(),
+                    Toast.makeText(
+                        requireContext(),
                         "Verification email sent to ${user.email} ",
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
                     Log.e(TAG, "sendEmailVerification", task.exception)
-                    Toast.makeText(requireContext(),
+                    Toast.makeText(
+                        requireContext(),
                         "Failed to send verification email.",
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 // [END_EXCLUDE]
             }
@@ -150,8 +156,6 @@ class RegistrationFragment : Fragment() {
     companion object {
         private const val TAG = "Main"
     }
-
-
 
 
     override fun onDestroyView() {

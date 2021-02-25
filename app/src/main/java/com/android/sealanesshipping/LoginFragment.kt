@@ -40,8 +40,9 @@ class LoginFragment : Fragment() {
 
         return binding.root
     }
+
     private fun onClick() {
-        signIn(binding.etEmaillogin.text.toString(),binding.etpasswordlogin.text.toString())
+        signIn(binding.etEmaillogin.text.toString(), binding.etpasswordlogin.text.toString())
     }
 
     private fun signIn(email: String, password: String) {
@@ -57,20 +58,25 @@ class LoginFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val user = auth.currentUser
-                    view?.findNavController()?.navigate(R.id.action_loginFragment_to_destinationFragment)
+                    view?.findNavController()
+                        ?.navigate(R.id.action_loginFragment_to_destinationFragment)
                 } else {
                     // If sign in fails, display a message to the user.
 
-                    Toast.makeText(requireContext(), "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
 
                 }
 
                 // [START_EXCLUDE]
                 if (!task.isSuccessful) {
-                    Toast.makeText(requireContext(), "Failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), "Failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 // [END_EXCLUDE]
                 hideProgressBar()
@@ -90,9 +96,6 @@ class LoginFragment : Fragment() {
     fun hideProgressBar() {
         progressBar?.visibility = View.INVISIBLE
     }
-
-
-
 
 
     private fun validateForm(): Boolean {
@@ -120,6 +123,7 @@ class LoginFragment : Fragment() {
     companion object {
         private const val TAG = "Main"
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
