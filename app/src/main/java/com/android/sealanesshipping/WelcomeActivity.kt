@@ -22,11 +22,14 @@ class WelcomeActivity : AppIntro2() {
         } else {
             goToMain()
         }
+
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun showIntroSlides() {
         manager.setFirstRun()
+
+
         val pageOne = SliderPagerBuilder()
             .title(getString(R.string.slide_one_top_text))
             .description(getString(R.string.slide_one_down_text))
