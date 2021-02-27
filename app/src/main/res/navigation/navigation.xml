@@ -29,6 +29,9 @@
             app:destination="@id/destinationFragment"
             app:popUpTo="@id/titleFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -80,4 +83,14 @@
         android:name="com.android.sealanesshipping.SuccessFragment"
         android:label="fragment_success"
         tools:layout="@layout/fragment_success" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.android.sealanesshipping.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_titleFragment"
+            app:destination="@id/titleFragment"
+            app:popUpTo="@id/titleFragment" />
+    </fragment>
 </navigation>

@@ -37,6 +37,9 @@ class LoginFragment : Fragment() {
         }
         setProgressBar(binding.progressBar2)
         auth = Firebase.auth
+        binding.textView21.setOnClickListener {
+            it.findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
+        }
 
         return binding.root
     }
