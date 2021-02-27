@@ -32,6 +32,9 @@ class TitleFragment : Fragment() {
         binding.button6.setOnClickListener {
             it.findNavController().navigate(R.id.action_titleFragment_to_registrationFragment)
         }
+        binding.button7.setOnClickListener {
+            throw RuntimeException("Test Crash") // Force a crash
+        }
         return binding.root
     }
 
