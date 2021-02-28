@@ -38,5 +38,6 @@
     <string name="string_share">Share</string>
     <string name="string_about_us">About us</string>
     <string name="string_contact_us">Contact us</string>
-    <string name="string_forgot_password">Forgot Password?</string>
+    <string name="string_forgot_password">Forgot your password?</string>
+    <string name="forgot_password">Forgot Password?</string>
 </resources>
