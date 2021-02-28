@@ -33,15 +33,19 @@ class TitleFragment : Fragment() {
         binding.button7.setOnClickListener {
             throw RuntimeException("Test Crash") // Force a crash
         }
+
+        // This indicates that the fragment has an option menu
         setHasOptionsMenu(true)
         return binding.root
     }
 
-
+    // Method is called when options menu is created
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.before_login, menu)
     }
+
+    // Method is called when an option is selected from options menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
                 || super.onOptionsItemSelected(item)

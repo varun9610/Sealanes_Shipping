@@ -2,13 +2,12 @@ package com.android.sealanesshipping
 
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.android.sealanesshipping.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -40,6 +39,8 @@ class LoginFragment : Fragment() {
         binding.textView21.setOnClickListener {
             it.findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
         }
+
+        setHasOptionsMenu(true)
 
         return binding.root
     }
@@ -88,15 +89,15 @@ class LoginFragment : Fragment() {
     }
 
 
-    fun setProgressBar(bar: ProgressBar) {
+    private fun setProgressBar(bar: ProgressBar) {
         progressBar = bar
     }
 
-    fun showProgressBar() {
+    private fun showProgressBar() {
         progressBar?.visibility = View.VISIBLE
     }
 
-    fun hideProgressBar() {
+    private fun hideProgressBar() {
         progressBar?.visibility = View.INVISIBLE
     }
 
@@ -125,6 +126,19 @@ class LoginFragment : Fragment() {
 
     companion object {
         private const val TAG = "Main"
+    }
+
+    // Method is called when options menu is created
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.before_login, menu)
+    }
+
+    // Method is called when an option is selected from options menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
+                || super.onOptionsItemSelected(item)
+
     }
 
     override fun onDestroyView() {

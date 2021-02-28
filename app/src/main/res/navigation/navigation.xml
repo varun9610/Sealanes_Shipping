@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/titleFragment"
         android:name="com.android.sealanesshipping.TitleFragment"
-        android:label="fragment_title"
-        tools:layout="@layout/fragment_title" >
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_title">
         <action
             android:id="@+id/action_titleFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -18,18 +18,12 @@
             android:id="@+id/action_titleFragment_to_registrationFragment"
             app:destination="@id/registrationFragment"
             app:popUpTo="@id/titleFragment" />
-        <action
-            android:id="@+id/action_titleFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
-        <action
-            android:id="@+id/action_titleFragment_to_contactFragment"
-            app:destination="@id/contactFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.android.sealanesshipping.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_destinationFragment"
             app:destination="@id/destinationFragment"
@@ -42,8 +36,8 @@
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.android.sealanesshipping.RegistrationFragment"
-        android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" >
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -53,22 +47,24 @@
     <fragment
         android:id="@+id/weightInput"
         android:name="com.android.sealanesshipping.WeightInput"
-        android:label="fragment_weight_input"
-        tools:layout="@layout/fragment_weight_input" >
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_weight_input">
         <action
             android:id="@+id/action_weightInput_to_successFragment"
             app:destination="@id/successFragment"
             app:popUpTo="@id/weightInput" />
-        <argument android:name="source_location"
+        <argument
+            android:name="source_location"
             app:argType="string" />
-        <argument android:name="destination_location"
+        <argument
+            android:name="destination_location"
             app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/destinationFragment"
         android:name="com.android.sealanesshipping.DestinationFragment"
-        android:label="fragment_destination"
-        tools:layout="@layout/fragment_destination" >
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_destination">
         <action
             android:id="@+id/action_destinationFragment_to_weightInput"
             app:destination="@id/weightInput"
@@ -77,7 +73,7 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.android.sealanesshipping.AboutFragment"
-        android:label="fragment_about"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/contactFragment"
@@ -87,13 +83,13 @@
     <fragment
         android:id="@+id/successFragment"
         android:name="com.android.sealanesshipping.SuccessFragment"
-        android:label="fragment_success"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_success" />
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.android.sealanesshipping.ForgotPasswordFragment"
-        android:label="fragment_forgot_password"
-        tools:layout="@layout/fragment_forgot_password" >
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_forgot_password">
         <action
             android:id="@+id/action_forgotPasswordFragment_to_titleFragment"
             app:destination="@id/titleFragment"

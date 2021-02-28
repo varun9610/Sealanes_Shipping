@@ -1,27 +1,18 @@
 package com.android.sealanesshipping
 
-import android.R.attr
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
+import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.android.sealanesshipping.databinding.FragmentRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import android.R.attr.button
-import android.R.attr.onClick
-import android.content.Context
-import android.util.Log
-import android.view.inputmethod.InputMethodManager
-import android.widget.ProgressBar
-import androidx.core.content.ContextCompat.getSystemService
 
 
 class RegistrationFragment : Fragment() {
@@ -46,6 +37,7 @@ class RegistrationFragment : Fragment() {
         }
         setProgressBar(binding.progressBar)
         auth = Firebase.auth
+        setHasOptionsMenu(true)
 
         return binding.root
     }
@@ -82,7 +74,6 @@ class RegistrationFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                     sendEmailVerification()
-                    val user = auth.currentUser
                     view?.findNavController()
                         ?.navigate(R.id.action_registrationFragment_to_loginFragment)
 
@@ -99,6 +90,18 @@ class RegistrationFragment : Fragment() {
                 hideProgressBar()
             }
         // [END create_user_with_email]
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.before_login, menu)
+    }
+
+    // Method is called when an option is selected from options menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
+                || super.onOptionsItemSelected(item)
+
     }
 
     private fun sendEmailVerification() {
