@@ -40,4 +40,8 @@
     <string name="string_contact_us">Contact us</string>
     <string name="string_forgot_password">Forgot your password?</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="string_leave_a_msg">Leave a message down below and we will make sure to contact you.</string>
+    <string name="string_subject">Subject</string>
+    <string name="hint_subject">Enter Subject</string>
+    <string name="hint_message" > Message</string>
 </resources>

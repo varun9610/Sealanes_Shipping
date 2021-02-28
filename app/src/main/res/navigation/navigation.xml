@@ -18,6 +18,12 @@
             android:id="@+id/action_titleFragment_to_registrationFragment"
             app:destination="@id/registrationFragment"
             app:popUpTo="@id/titleFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
