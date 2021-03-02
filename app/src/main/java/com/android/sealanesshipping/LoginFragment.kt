@@ -49,6 +49,7 @@ class LoginFragment : Fragment() {
     private fun onClick() {
         signIn(binding.etEmaillogin.text.toString(), binding.etpasswordlogin.text.toString())
     }
+
     private fun checkCurrentUser() {
         // [START check_current_user]
         val user = Firebase.auth.currentUser
@@ -61,6 +62,7 @@ class LoginFragment : Fragment() {
         }
         // [END check_current_user]
     }
+
     private fun signIn(email: String, password: String) {
 
         if (!validateForm()) {

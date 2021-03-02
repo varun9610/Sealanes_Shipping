@@ -5,7 +5,6 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.android.sealanesshipping.databinding.FragmentDestinationBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -25,10 +24,11 @@ class DestinationFragment : Fragment() {
 
         return binding.root
     }
+
     private fun signOut() {
         // [START auth_sign_out]
         Firebase.auth.signOut()
-        Toast.makeText(requireContext(),"You are signed out",Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "You are signed out", Toast.LENGTH_SHORT).show()
         view?.findNavController()?.navigate(R.id.action_destinationFragment_to_titleFragment)
         // [END auth_sign_out]
     }
