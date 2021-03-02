@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.android.sealanesshipping.databinding.FragmentTitleBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class TitleFragment : Fragment() {
@@ -33,6 +35,7 @@ class TitleFragment : Fragment() {
         binding.button7.setOnClickListener {
             throw RuntimeException("Test Crash") // Force a crash
         }
+        checkCurrentUser()
 
         // This indicates that the fragment has an option menu
         setHasOptionsMenu(true)
@@ -52,6 +55,23 @@ class TitleFragment : Fragment() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        checkCurrentUser()
+    }
+
+    private fun checkCurrentUser() {
+        // [START check_current_user]
+        val user = Firebase.auth.currentUser
+        if (user != null) {
+            // User is signed in
+            view?.findNavController()?.navigate(R.id.action_titleFragment_to_destinationFragment)
+        } else {
+            // No user is signed in
+            return
+        }
+        // [END check_current_user]
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

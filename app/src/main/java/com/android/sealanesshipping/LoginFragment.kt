@@ -40,15 +40,27 @@ class LoginFragment : Fragment() {
             it.findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
         }
 
-        setHasOptionsMenu(true)
 
+        setHasOptionsMenu(true)
+        checkCurrentUser()
         return binding.root
     }
 
     private fun onClick() {
         signIn(binding.etEmaillogin.text.toString(), binding.etpasswordlogin.text.toString())
     }
-
+    private fun checkCurrentUser() {
+        // [START check_current_user]
+        val user = Firebase.auth.currentUser
+        if (user != null) {
+            // User is signed in
+            view?.findNavController()?.navigate(R.id.action_loginFragment_to_destinationFragment)
+        } else {
+            // No user is signed in
+            return
+        }
+        // [END check_current_user]
+    }
     private fun signIn(email: String, password: String) {
 
         if (!validateForm()) {
@@ -122,6 +134,11 @@ class LoginFragment : Fragment() {
         }
 
         return valid
+    }
+
+    override fun onStart() {
+        super.onStart()
+        checkCurrentUser()
     }
 
     companion object {
