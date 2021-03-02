@@ -74,15 +74,14 @@ class RegistrationFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                     sendEmailVerification()
-                    view?.findNavController()
-                        ?.navigate(R.id.action_registrationFragment_to_loginFragment)
+
 
                 } else {
                     // If sign in fails, display a message to the user.
 
                     Toast.makeText(
                         requireContext(),
-                        "Registration failed. Please Try Again in a after some time.",
+                        "Registration failed. Please try again after some time.",
                         Toast.LENGTH_SHORT
                     ).show()
 

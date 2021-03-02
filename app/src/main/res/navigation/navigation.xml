@@ -27,7 +27,6 @@
         <action
             android:id="@+id/action_loginFragment_to_destinationFragment"
             app:destination="@id/destinationFragment"
-            app:popUpTo="@id/titleFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
