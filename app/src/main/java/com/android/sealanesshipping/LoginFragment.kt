@@ -75,14 +75,13 @@ class LoginFragment : Fragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val user = auth.currentUser
                     view?.findNavController()
                         ?.navigate(R.id.action_loginFragment_to_destinationFragment)
                 } else {
                     // If sign in fails, display a message to the user.
 
                     Toast.makeText(
-                        requireContext(), "Authentication failed.",
+                        requireContext(), "Email/Password entered is wrong.",
                         Toast.LENGTH_SHORT
                     ).show()
 

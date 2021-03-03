@@ -12,6 +12,7 @@ import androidx.navigation.ui.NavigationUI
 import com.android.sealanesshipping.databinding.FragmentRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
@@ -20,6 +21,7 @@ class RegistrationFragment : Fragment() {
     private var progressBar: ProgressBar? = null
     private var _binding: FragmentRegistrationBinding? = null
     private lateinit var auth: FirebaseAuth
+    val db = Firebase.firestore
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -70,11 +72,23 @@ class RegistrationFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(
-                        requireContext(), "Registration Successful",
+                        requireContext(), "Signup Successful",
                         Toast.LENGTH_SHORT
                     ).show()
-                    sendEmailVerification()
 
+                    val user = hashMapOf(
+                        "uuid" to auth.uid,
+                        "email" to binding.etEmail.text.toString(),
+                        "name" to binding.etName.text.toString(),
+                        "phonenumber" to binding.etPhonenumber.text.toString()
+                    )
+                    db.collection("users")
+                        .add(user)
+                    sendEmailVerification()
+                    binding.etEmail.setText("")
+                    binding.etName.setText("")
+                    binding.etPhonenumber.setText("")
+                    binding.etpassword.setText("")
 
                 } else {
                     // If sign in fails, display a message to the user.
