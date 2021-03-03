@@ -44,4 +44,6 @@
     <string name="string_subject">Subject</string>
     <string name="hint_subject">Enter Subject</string>
     <string name="hint_message" > Message</string>
+    <string name="share_success_text">Hey  %1$s !</string>
+
 </resources>

@@ -6,7 +6,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.android.sealanesshipping.databinding.FragmentDestinationBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
@@ -14,6 +16,8 @@ class DestinationFragment : Fragment() {
 
     private var _binding: FragmentDestinationBinding? = null
     private val binding get() = _binding!!
+    private lateinit var auth: FirebaseAuth
+    val db = Firebase.firestore
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -21,7 +25,9 @@ class DestinationFragment : Fragment() {
     ): View {
         _binding = FragmentDestinationBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
-
+        binding.button.setOnClickListener {
+            view?.findNavController()?.navigate(DestinationFragmentDirections.actionDestinationFragmentToWeightInput(binding.etSourceDestination.text.toString(),binding.etfinalDestination.text.toString()))
+        }
         return binding.root
     }
 

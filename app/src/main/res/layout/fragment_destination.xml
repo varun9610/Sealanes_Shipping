@@ -9,7 +9,7 @@
 
 
     <EditText
-        android:id="@+id/etSourceDestination2"
+        android:id="@+id/etfinalDestination"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:ems="10"

@@ -57,7 +57,7 @@
         <action
             android:id="@+id/action_weightInput_to_successFragment"
             app:destination="@id/successFragment"
-            app:popUpTo="@id/weightInput" />
+            app:popUpTo="@id/destinationFragment" />
         <argument
             android:name="source_location"
             app:argType="string" />
@@ -93,7 +93,11 @@
         android:id="@+id/successFragment"
         android:name="com.android.sealanesshipping.SuccessFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_success" />
+        tools:layout="@layout/fragment_success" >
+        <argument
+            android:name="order_id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.android.sealanesshipping.ForgotPasswordFragment"
