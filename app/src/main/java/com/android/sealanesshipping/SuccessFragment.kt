@@ -1,9 +1,7 @@
 package com.android.sealanesshipping
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import com.android.sealanesshipping.databinding.FragmentSuccessBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -35,7 +33,18 @@ class SuccessFragment : Fragment() {
         if (user != null) {
             binding.textView7.text = user.displayName
         }
+        setHasOptionsMenu(true)
         return binding.root
+    }
+
+    // Method is called when options menu is created
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.share_menu, menu)
+    }
+    // Method is called when options menu is selected
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {

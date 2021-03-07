@@ -49,7 +49,7 @@ class DestinationFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.after_login, menu)
     }
-
+    // Method is called when options menu is selected
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         signOut()
         return super.onOptionsItemSelected(item)
