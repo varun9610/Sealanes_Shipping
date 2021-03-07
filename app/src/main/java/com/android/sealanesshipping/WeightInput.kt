@@ -10,7 +10,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlin.random.Random
 
 class WeightInput : Fragment() {
 
@@ -24,7 +23,6 @@ class WeightInput : Fragment() {
     private lateinit var auth: FirebaseAuth
     val db = Firebase.firestore
     private var order_id: Int = 1
-    val random = Random(100000)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,7 +33,7 @@ class WeightInput : Fragment() {
         auth = Firebase.auth
 
         binding.button2.setOnClickListener {
-            order_id = random.nextInt(100,10000)
+            order_id = (1000..100000).random()
             val args = WeightInputArgs.fromBundle(requireArguments())
             val orders = hashMapOf(
                 "uuid" to auth.uid,
@@ -46,12 +44,17 @@ class WeightInput : Fragment() {
             )
             db.collection("orders")
                 .add(orders)
-                .addOnSuccessListener { view?.findNavController()?.navigate(WeightInputDirections.actionWeightInputToSuccessFragment(
-                    order_id
-                )) }
+                .addOnSuccessListener {
+                    view?.findNavController()?.navigate(
+                        WeightInputDirections.actionWeightInputToSuccessFragment(
+                            order_id
+                        )
+                    )
+                }
         }
         return binding.root
     }
+
     private fun signOut() {
         // [START auth_sign_out]
         Firebase.auth.signOut()

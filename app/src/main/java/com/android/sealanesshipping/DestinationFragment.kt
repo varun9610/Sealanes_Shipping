@@ -26,7 +26,12 @@ class DestinationFragment : Fragment() {
         _binding = FragmentDestinationBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         binding.button.setOnClickListener {
-            view?.findNavController()?.navigate(DestinationFragmentDirections.actionDestinationFragmentToWeightInput(binding.etSourceDestination.text.toString(),binding.etfinalDestination.text.toString()))
+            view?.findNavController()?.navigate(
+                DestinationFragmentDirections.actionDestinationFragmentToWeightInput(
+                    binding.etSourceDestination.text.toString(),
+                    binding.etfinalDestination.text.toString()
+                )
+            )
         }
         return binding.root
     }
