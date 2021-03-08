@@ -65,6 +65,7 @@
         <argument
             android:name="destination_location"
             app:argType="string" />
+        <argument android:name="documentid" />
     </fragment>
     <fragment
         android:id="@+id/destinationFragment"

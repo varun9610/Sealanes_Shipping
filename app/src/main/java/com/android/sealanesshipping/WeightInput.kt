@@ -1,6 +1,8 @@
 package com.android.sealanesshipping
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -31,26 +33,49 @@ class WeightInput : Fragment() {
         _binding = FragmentWeightInputBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         auth = Firebase.auth
-
+        val args = WeightInputArgs.fromBundle(requireArguments())
+        order_id = (1000..100000).random()
         binding.button2.setOnClickListener {
-            order_id = (1000..100000).random()
-            val args = WeightInputArgs.fromBundle(requireArguments())
             val orders = hashMapOf(
+                "ship_assigned" to args.documentid,
                 "uuid" to auth.uid,
                 "cargo_weight" to binding.etWeightInput.text.toString(),
                 "source_location" to args.sourceLocation,
                 "destination" to args.destinationLocation,
                 "order_id" to order_id
             )
-            db.collection("orders")
-                .add(orders)
-                .addOnSuccessListener {
-                    view?.findNavController()?.navigate(
-                        WeightInputDirections.actionWeightInputToSuccessFragment(
-                            order_id
-                        )
-                    )
+            var rem_cap: String = binding.etWeightInput.text.toString()
+
+            db.collection("ships").document(args.documentid).collection("container")
+                .whereLessThan("container_cap", binding.etWeightInput.text.toString())
+                .get()
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error adding document", e)
                 }
+                .addOnSuccessListener { queryDocumentSnapshots ->
+                    for (snap in queryDocumentSnapshots) {
+                        Log.d(TAG, "${snap.id} => ${snap.data}")
+                        var con_cap = snap.data
+                        rem_cap = (con_cap - rem_cap).toString()
+                    }
+
+                    db.collection("ships").document(args.documentid).collection("container")
+                        .document("container")
+                        .update("container_cap", rem_cap)
+                    db.collection("orders")
+                        .add(orders)
+                        .addOnFailureListener { e ->
+                            Log.w(TAG, "Error adding document", e)
+                        }
+                        .addOnSuccessListener {
+                            view?.findNavController()?.navigate(
+                                WeightInputDirections.actionWeightInputToSuccessFragment(
+                                    order_id
+                                )
+                            )
+                        }
+                }
+
         }
         return binding.root
     }

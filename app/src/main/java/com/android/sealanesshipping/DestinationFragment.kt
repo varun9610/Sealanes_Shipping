@@ -1,6 +1,8 @@
 package com.android.sealanesshipping
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -25,13 +27,36 @@ class DestinationFragment : Fragment() {
     ): View {
         _binding = FragmentDestinationBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
+        val cities = db.collection("ships")
+        var documentid: String = ""
         binding.button.setOnClickListener {
-            view?.findNavController()?.navigate(
-                DestinationFragmentDirections.actionDestinationFragmentToWeightInput(
-                    binding.etSourceDestination.text.toString(),
-                    binding.etfinalDestination.text.toString()
-                )
-            )
+            cities
+                .whereEqualTo("shipfrom", binding.etSourceDestination.text.toString())
+                .whereEqualTo("shipto", binding.etfinalDestination.text.toString())
+                .get()
+                .addOnFailureListener { e ->
+                    Toast.makeText(
+                        requireContext(),
+                        "No ships available on that route.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Log.w(TAG, "Error adding document", e)
+                }
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        Log.d(TAG, "${document.id} => ${document.data}")
+                        documentid = document.id
+                    }
+                    view?.findNavController()?.navigate(
+                        DestinationFragmentDirections.actionDestinationFragmentToWeightInput(
+                            binding.etSourceDestination.text.toString(),
+                            binding.etfinalDestination.text.toString(),
+                            documentid
+                        )
+                    )
+                }
+
+
         }
         return binding.root
     }
@@ -49,6 +74,7 @@ class DestinationFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.after_login, menu)
     }
+
     // Method is called when options menu is selected
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         signOut()

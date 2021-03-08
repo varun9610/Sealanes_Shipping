@@ -29,9 +29,9 @@ class SuccessFragment : Fragment() {
         val args1 = SuccessFragmentArgs.fromBundle(requireArguments())
         val user = Firebase.auth.currentUser
 
-        binding.textView10.text = args1.orderId.toString()
+        binding.textView10.setText(args1.orderId.toString())
         if (user != null) {
-            binding.textView7.text = user.displayName
+            binding.textView7.setText(user.displayName)
         }
         setHasOptionsMenu(true)
         return binding.root
