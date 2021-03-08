@@ -26,13 +26,11 @@ class SuccessFragment : Fragment() {
     ): View {
         _binding = FragmentSuccessBinding.inflate(inflater, container, false)
         auth = Firebase.auth
-        val args1 = SuccessFragmentArgs.fromBundle(requireArguments())
+        val args = SuccessFragmentArgs.fromBundle(requireArguments())
         val user = Firebase.auth.currentUser
 
-        binding.textView10.setText(args1.orderId.toString())
-        if (user != null) {
-            binding.textView7.setText(user.displayName)
-        }
+        binding.textView10.text = args.orderId.toString()
+
         setHasOptionsMenu(true)
         return binding.root
     }

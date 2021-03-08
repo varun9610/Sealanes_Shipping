@@ -27,10 +27,9 @@ class DestinationFragment : Fragment() {
     ): View {
         _binding = FragmentDestinationBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
-        val cities = db.collection("ships")
-        var documentid: String = ""
+         lateinit var documentid: String
         binding.button.setOnClickListener {
-            cities
+            db.collection("ships")
                 .whereEqualTo("shipfrom", binding.etSourceDestination.text.toString())
                 .whereEqualTo("shipto", binding.etfinalDestination.text.toString())
                 .get()
@@ -40,7 +39,7 @@ class DestinationFragment : Fragment() {
                         "No ships available on that route.",
                         Toast.LENGTH_SHORT
                     ).show()
-                    Log.w(TAG, "Error adding document", e)
+                    Log.w(TAG, "Error getting document", e)
                 }
                 .addOnSuccessListener { documents ->
                     for (document in documents) {

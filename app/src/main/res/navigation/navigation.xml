@@ -60,11 +60,9 @@
             app:destination="@id/successFragment"
             app:popUpTo="@id/destinationFragment" />
         <argument
-            android:name="source_location"
-            app:argType="string" />
+            android:name="source_location" />
         <argument
-            android:name="destination_location"
-            app:argType="string" />
+            android:name="destination_location" />
         <argument android:name="documentid" />
     </fragment>
     <fragment

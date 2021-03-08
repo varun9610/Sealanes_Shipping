@@ -25,17 +25,19 @@ class WeightInput : Fragment() {
     private lateinit var auth: FirebaseAuth
     val db = Firebase.firestore
     private var order_id: Int = 1
+    private var rem_cap: String? = "0"
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentWeightInputBinding.inflate(inflater, container, false)
-        setHasOptionsMenu(true)
         auth = Firebase.auth
         val args = WeightInputArgs.fromBundle(requireArguments())
+        setHasOptionsMenu(true)
         order_id = (1000..100000).random()
         binding.button2.setOnClickListener {
+
             val orders = hashMapOf(
                 "ship_assigned" to args.documentid,
                 "uuid" to auth.uid,
@@ -44,36 +46,53 @@ class WeightInput : Fragment() {
                 "destination" to args.destinationLocation,
                 "order_id" to order_id
             )
-            var rem_cap: String = binding.etWeightInput.text.toString()
 
             db.collection("ships").document(args.documentid).collection("container")
                 .whereLessThan("container_cap", binding.etWeightInput.text.toString())
                 .get()
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error adding document", e)
+                .addOnFailureListener {
+                    Toast.makeText(
+                        requireContext(),
+                        "Not enough container space available.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 .addOnSuccessListener { queryDocumentSnapshots ->
                     for (snap in queryDocumentSnapshots) {
                         Log.d(TAG, "${snap.id} => ${snap.data}")
-                        var con_cap = snap.data
-                        rem_cap = (con_cap - rem_cap).toString()
+                        val container_cap = snap.data["container_cap"].toString()
+                        rem_cap = (container_cap.toInt() - (binding.etWeightInput.text.toString()).toInt()).toString()
+                        if (rem_cap!!.toInt() < 0){
+                            Toast.makeText(
+                                requireContext(),
+                                "Not enough container space available.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                        }
+                        else{
+
+                            db.collection("ships").document(args.documentid).collection("container")
+                                .document("container")
+                                .update("container_cap", rem_cap)
+                            db.collection("orders")
+                                .add(orders)
+                                .addOnFailureListener { e ->
+                                    Log.w(TAG, "Error adding document", e)
+                                }
+                                .addOnSuccessListener {
+                                    view?.findNavController()?.navigate(
+                                        WeightInputDirections.actionWeightInputToSuccessFragment(
+                                            order_id
+                                        )
+                                    )
+                                }
+                        }
+                        Log.d(TAG, rem_cap!!)
+                        Log.d(TAG,container_cap)
+
                     }
 
-                    db.collection("ships").document(args.documentid).collection("container")
-                        .document("container")
-                        .update("container_cap", rem_cap)
-                    db.collection("orders")
-                        .add(orders)
-                        .addOnFailureListener { e ->
-                            Log.w(TAG, "Error adding document", e)
-                        }
-                        .addOnSuccessListener {
-                            view?.findNavController()?.navigate(
-                                WeightInputDirections.actionWeightInputToSuccessFragment(
-                                    order_id
-                                )
-                            )
-                        }
                 }
 
         }
