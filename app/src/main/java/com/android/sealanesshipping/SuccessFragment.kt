@@ -30,7 +30,7 @@ class SuccessFragment : Fragment() {
         val user = Firebase.auth.currentUser
 
         binding.textView10.text = args.orderId.toString()
-
+        binding.textView7.text = "Hey" + user?.displayName
         setHasOptionsMenu(true)
         return binding.root
     }
