@@ -3,6 +3,7 @@ package com.android.sealanesshipping
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.android.sealanesshipping.databinding.FragmentSuccessBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -30,7 +31,9 @@ class SuccessFragment : Fragment() {
         val user = Firebase.auth.currentUser
 
         binding.textView10.text = args.orderId.toString()
-
+        binding.button10.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_successFragment_to_destinationFragment)
+        }
         setHasOptionsMenu(true)
         return binding.root
     }

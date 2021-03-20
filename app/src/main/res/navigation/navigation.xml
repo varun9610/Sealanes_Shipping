@@ -97,6 +97,10 @@
         <argument
             android:name="order_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_successFragment_to_destinationFragment"
+            app:destination="@id/destinationFragment"
+            app:popUpTo="@id/destinationFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
