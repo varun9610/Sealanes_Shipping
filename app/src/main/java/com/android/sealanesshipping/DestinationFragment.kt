@@ -45,6 +45,15 @@ class DestinationFragment : Fragment() {
                     for (document in documents) {
                         Log.d(TAG, "${document.id} => ${document.data}")
                         documentid = document.id
+                        val shipfrom = document.data["shipfrom"].toString()
+                        val shipto = document.data["shipto"].toString()
+                        if (binding.etSourceDestination.text.toString() != shipfrom && binding.etfinalDestination.text.toString() != shipto){
+                            Toast.makeText(
+                                requireContext(),
+                                "No ships available on that route.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                     view?.findNavController()?.navigate(
                         DestinationFragmentDirections.actionDestinationFragmentToWeightInput(
