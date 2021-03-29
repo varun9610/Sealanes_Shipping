@@ -47,21 +47,24 @@ class DestinationFragment : Fragment() {
                         documentid = document.id
                         val shipfrom = document.data["shipfrom"].toString()
                         val shipto = document.data["shipto"].toString()
-                        if (binding.etSourceDestination.text.toString() != shipfrom && binding.etfinalDestination.text.toString() != shipto){
+                        if (binding.etSourceDestination.text.toString() != shipfrom || binding.etfinalDestination.text.toString() != shipto){
                             Toast.makeText(
                                 requireContext(),
                                 "No ships available on that route.",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
+                        else{
+                            view?.findNavController()?.navigate(
+                                DestinationFragmentDirections.actionDestinationFragmentToWeightInput(
+                                    binding.etSourceDestination.text.toString(),
+                                    binding.etfinalDestination.text.toString(),
+                                    documentid
+                                )
+                            )
+                        }
                     }
-                    view?.findNavController()?.navigate(
-                        DestinationFragmentDirections.actionDestinationFragmentToWeightInput(
-                            binding.etSourceDestination.text.toString(),
-                            binding.etfinalDestination.text.toString(),
-                            documentid
-                        )
-                    )
+
                 }
 
 
