@@ -12,6 +12,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.sql.Date
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 
 
 class DestinationFragment : Fragment() {
@@ -47,12 +50,30 @@ class DestinationFragment : Fragment() {
                         documentid = document.id
                         val shipfrom = document.data["shipfrom"].toString()
                         val shipto = document.data["shipto"].toString()
-                        if (binding.etSourceDestination.text.toString() != shipfrom || binding.etfinalDestination.text.toString() != shipto){
+
+                        val timestamp = document.data["ship_sail"] as com.google.firebase.Timestamp
+                        val milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
+                        Log.d(TAG, milliseconds.toString())
+                        val sdf = SimpleDateFormat("dd/MM/yyyy")
+                        val netDate = Date(milliseconds)
+                        //Log.d(TAG, netDate.toString())
+                        val date = sdf.format(netDate)
+                        //Log.d(TAG, date)
+
+                        val str_date: String = binding.editTextDate.text.toString()
+                        val formatter: DateFormat = SimpleDateFormat("dd/MM/yyyy")
+                        val date1 = formatter.parse(str_date) as java.util.Date
+                        val output = date1.time / 1000L
+                        val str = java.lang.Long.toString(output)
+                        val timestamp1 = str.toLong() * 1000
+                        Log.d(TAG, timestamp1.toString())
+                        if (timestamp1 > milliseconds){
                             Toast.makeText(
                                 requireContext(),
-                                "No ships available on that route.",
+                                "No ships available on that route and date.Please retry again later",
                                 Toast.LENGTH_SHORT
                             ).show()
+
                         }
                         else{
                             view?.findNavController()?.navigate(
@@ -63,6 +84,15 @@ class DestinationFragment : Fragment() {
                                 )
                             )
                         }
+
+                        if (binding.etSourceDestination.text.toString() != shipfrom || binding.etfinalDestination.text.toString() != shipto){
+                            Toast.makeText(
+                                requireContext(),
+                                "No ships available on that route.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
                     }
 
                 }

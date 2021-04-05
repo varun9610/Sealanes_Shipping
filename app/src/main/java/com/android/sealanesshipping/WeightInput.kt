@@ -51,11 +51,12 @@ class WeightInput : Fragment() {
                 .whereLessThan("container_cap", binding.etWeightInput.text.toString())
                 .get()
                 .addOnFailureListener {
-                  /*  Toast.makeText(
+                    Toast.makeText(
                         requireContext(),
                         "Not enough container space available.",
                         Toast.LENGTH_SHORT
-                    ).show()*/
+                    ).show()
+
                 }
                 .addOnSuccessListener { queryDocumentSnapshots ->
                     for (snap in queryDocumentSnapshots) {
