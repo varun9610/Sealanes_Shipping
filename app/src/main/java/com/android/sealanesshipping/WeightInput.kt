@@ -33,6 +33,8 @@ class WeightInput : Fragment() {
     ): View {
         _binding = FragmentWeightInputBinding.inflate(inflater, container, false)
         auth = Firebase.auth
+        lateinit var containerid: String
+        lateinit var container_cap : String
         val args = WeightInputArgs.fromBundle(requireArguments())
         setHasOptionsMenu(true)
         order_id = (1000..100000).random()
@@ -48,7 +50,7 @@ class WeightInput : Fragment() {
             )
 
             db.collection("ships").document(args.documentid).collection("container")
-                .whereLessThan("container_cap", binding.etWeightInput.text.toString())
+                .whereGreaterThan("container_cap", binding.etWeightInput.text.toString())
                 .get()
                 .addOnFailureListener {
                     Toast.makeText(
@@ -61,8 +63,9 @@ class WeightInput : Fragment() {
                 .addOnSuccessListener { queryDocumentSnapshots ->
                     for (snap in queryDocumentSnapshots) {
                         Log.d(TAG, "${snap.id} => ${snap.data}")
-                        val container_cap = snap.data["container_cap"].toString()
-                        rem_cap = (container_cap.toInt() - (binding.etWeightInput.text.toString()).toInt()).toString()
+                        containerid = snap.id
+                        container_cap = snap.data["container_cap"].toString()
+                        rem_cap = (container_cap.toInt() - (binding.etWeightInput.text.toString()).toInt()).toString() }
                         if (rem_cap!!.toInt() < 0){
                             Toast.makeText(
                                 requireContext(),
@@ -74,7 +77,7 @@ class WeightInput : Fragment() {
                         else{
 
                             db.collection("ships").document(args.documentid).collection("container")
-                                .document("container")
+                                .document(containerid)
                                 .update("container_cap", rem_cap)
                             db.collection("orders")
                                 .add(orders)
@@ -96,7 +99,7 @@ class WeightInput : Fragment() {
 
                 }
 
-        }
+
         return binding.root
     }
 
