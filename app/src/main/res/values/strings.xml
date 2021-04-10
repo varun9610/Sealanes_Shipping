@@ -10,7 +10,7 @@
     <string name="source_destination">Enter Source Destination</string>
     <string name="step_1_2">Step 1/2</string>
     <string name="placeholder_enter_source_location">Source Location</string>
-    <string name="final_destination">Final Destination</string>
+    <string name="final_destination">Enter Final Destination</string>
     <string name="placeholder_enter_final_location">Final Location</string>
     <string name="next">Next</string>
     <string name="step_2_2">Step 2/2</string>
@@ -46,5 +46,7 @@
     <string name="hint_message" > Message</string>
     <string name="share_success_text">Hey  %1$s !</string>
     <string name="string_home">Home</string>
+    <string name="hint_enter_date" />
+    <string name="string_enter_sail_date">Enter Sailing Date</string>
 
 </resources>
